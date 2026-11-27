@@ -65,7 +65,7 @@ export function StatusBadge({ inq }: { inq: Inquiry }) {
 
 export function PriorityDot({ p }: { p: Inquiry['priority'] }) {
   const c = { urgent: 'bg-red-500', normal: 'bg-sky-500', low: 'bg-slate-400' }[p]
-  return <span className={`inline-block size-2 rounded-full ${c}`} />
+  return <span className={`inline-block size-2 shrink-0 rounded-full ${c}`} />
 }
 
 export function ResponseTimer({ inq }: { inq: Inquiry }) {

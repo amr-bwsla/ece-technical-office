@@ -33,7 +33,7 @@ export default function Login() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-teal-800 via-teal-700 to-slate-800 p-4" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+    <div className="flex min-h-screen items-center justify-center overflow-x-clip bg-gradient-to-br from-teal-800 via-teal-700 to-slate-800 p-4" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
       <div className="w-full max-w-md space-y-4">
         <div className="flex justify-end">
           <button onClick={() => setLang(lang === 'ar' ? 'en' : 'ar')} className="flex items-center gap-1 rounded-xl bg-white/10 px-3 py-1.5 text-sm text-white hover:bg-white/20">

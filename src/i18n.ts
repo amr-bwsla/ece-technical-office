@@ -141,6 +141,7 @@ const dict = {
   wrongLogin: { ar: 'البريد أو كلمة المرور غير صحيحة', en: 'Invalid email or password' },
 
   submittals: { ar: 'التقديمات والاعتمادات', en: 'Submittals' },
+  submittalsShort: { ar: 'التقديمات', en: 'Submittals' },
   newSubmittal: { ar: 'تقديم جديد', en: 'New submittal' },
   submittalType: { ar: 'نوع التقديم', en: 'Submittal type' },
   st_design: { ar: 'لوحات تصميم', en: 'Design drawings' },

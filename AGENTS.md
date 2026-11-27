@@ -217,6 +217,14 @@ Routes (`App.tsx`): `login`, `/`, `projects[/new|/:id]`, `inquiries[/new|/:id]`,
    - White vector ECE logo in the sidebar.
    - Automatic mobile install banner.
    - Fixed sideways scrolling on phones by adding `grid-cols-1` to every grid.
+10. **Mobile layout polish (owner WhatsApp screenshots):**
+    - Bottom nav: fixed `h-16`, single-line truncated labels, optional `short` label key (`submittalsShort`), active indicator bar.
+    - The content column is `flex min-h-dvh flex-col` with `main flex-1`, so the mobile credit footer sits right above the bottom nav on short pages.
+    - `overflow-x-clip` on the Layout and Login roots as a safety net. Never put overflow on html/body, because it breaks `sticky`.
+    - Header top padding respects `env(safe-area-inset-top)`.
+    - `SubmittalTable` and `ContractTable` render cards below `md` and the table from `md` up.
+    - List filters use a 2-column grid on phones (search and project span both columns).
+    - `.btn` is `whitespace-nowrap shrink-0`. In page headers, give the title block `min-w-0`.
 
 ## 11. Ideas not done yet (if the owner asks for "more")
 

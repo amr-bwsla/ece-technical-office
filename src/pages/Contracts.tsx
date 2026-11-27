@@ -41,7 +41,7 @@ export default function Contracts() {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between gap-2">
-        <div>
+        <div className="min-w-0">
           <h1 className="text-xl font-bold">{t('contracts')} <span className="text-sm font-normal text-slate-400">({contracts.length})</span></h1>
           <p className="text-xs text-slate-500">{t('contractsHint')}</p>
         </div>
@@ -71,8 +71,8 @@ export default function Contracts() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-2 md:grid-cols-3">
-        <div className="relative">
+      <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
+        <div className="relative col-span-2 md:col-span-1">
           <Search className="absolute start-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
           <input className="input !ps-9" placeholder={t('searchContracts')} value={query} onChange={(e) => setQuery(e.target.value)} />
         </div>

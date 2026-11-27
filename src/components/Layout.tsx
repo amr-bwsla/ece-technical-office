@@ -32,7 +32,7 @@ import { Avatar } from './ui'
 
 const ALERT_CHECK_MS = 30_000
 
-type NavItem = { to: string; key: DictKey; icon: typeof Home; adminOnly?: boolean; hidden?: boolean; badge?: number }
+type NavItem = { to: string; key: DictKey; short?: DictKey; icon: typeof Home; adminOnly?: boolean; hidden?: boolean; badge?: number }
 
 function Toast() {
   const { l } = useT()
@@ -103,7 +103,7 @@ export default function Layout() {
     { to: '/', key: 'dashboard', icon: Home },
     { to: '/projects', key: 'projects', icon: FolderKanban },
     { to: '/inquiries', key: 'inquiries', icon: MessagesSquare, badge: waiting },
-    { to: '/submittals', key: 'submittals', icon: ClipboardCheck, badge: submittalTodo },
+    { to: '/submittals', key: 'submittals', short: 'submittalsShort', icon: ClipboardCheck, badge: submittalTodo },
     { to: '/contracts', key: 'contracts', icon: FileSignature, hidden: !canManageContracts(me), badge: expiringContracts },
     { to: '/notifications', key: 'notifications', icon: Bell, badge: unread },
     { to: '/workflows', key: 'workflows', icon: GitBranch, adminOnly: true },
@@ -120,7 +120,7 @@ export default function Layout() {
   }
 
   return (
-    <div className="min-h-screen md:flex">
+    <div className="min-h-screen overflow-x-clip md:flex">
       <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col no-scrollbar overflow-y-auto bg-gradient-to-b from-slate-900 to-slate-950 p-4 text-slate-300 md:flex print:!hidden">
         <div className="mb-4 space-y-3">
           <div className="px-2 pt-2">
@@ -178,8 +178,8 @@ export default function Layout() {
         </div>
       </aside>
 
-      <div className="min-w-0 flex-1 pb-20 md:pb-0">
-        <header className="sticky top-0 z-30 flex items-center gap-3 border-b border-slate-200/80 bg-white/80 px-4 py-3 backdrop-blur-lg print:hidden">
+      <div className="flex min-h-dvh min-w-0 flex-1 flex-col pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0">
+        <header className="sticky top-0 z-30 flex items-center gap-3 border-b border-slate-200/80 bg-white/80 px-4 pt-[max(0.75rem,env(safe-area-inset-top))] pb-3 backdrop-blur-lg print:hidden">
           <div className="flex min-w-0 items-center gap-2 md:hidden">
             <Avatar userId={me.id} />
             <div className="min-w-0">
@@ -219,7 +219,7 @@ export default function Layout() {
           </div>
         )}
 
-        <main className="mx-auto max-w-7xl p-4 md:p-6 print:max-w-none print:p-0">
+        <main className="mx-auto w-full max-w-7xl flex-1 p-4 md:p-6 print:max-w-none print:p-0">
           <Suspense
             fallback={
               <div className="flex justify-center py-20 text-slate-400">
@@ -230,7 +230,7 @@ export default function Layout() {
             <Outlet />
           </Suspense>
         </main>
-        <footer className="border-t border-slate-200 px-4 py-4 md:hidden print:hidden">
+        <footer className="border-t border-slate-200 bg-white/60 px-4 py-4 md:hidden print:hidden">
           <DevCredit tone="light" center />
         </footer>
       </div>
@@ -242,12 +242,19 @@ export default function Layout() {
             to={n.to}
             end={n.to === '/'}
             className={({ isActive }) =>
-              `relative flex flex-1 flex-col items-center gap-0.5 py-2 text-[11px] font-semibold ${isActive ? 'text-teal-700' : 'text-slate-500'}`
+              `relative flex h-16 min-w-0 flex-1 flex-col items-center justify-center gap-1 text-[11px] font-semibold ${isActive ? 'text-teal-700' : 'text-slate-500'}`
             }
           >
-            <n.icon className="size-5" />
-            {t(n.key)}
-            {!!n.badge && <span className="absolute top-1 start-1/2 ms-2 rounded-full bg-red-500 px-1.5 text-[10px] font-bold text-white">{n.badge}</span>}
+            {({ isActive }) => (
+              <>
+                {isActive && <span className="absolute inset-x-4 top-0 h-0.5 rounded-full bg-teal-700" />}
+                <n.icon className="size-5" />
+                <span className="max-w-full truncate px-1 leading-none">{t(n.short ?? n.key)}</span>
+                {!!n.badge && (
+                  <span className="absolute top-2 start-1/2 ms-2 rounded-full bg-red-500 px-1.5 text-[10px] font-bold leading-4 text-white">{n.badge}</span>
+                )}
+              </>
+            )}
           </NavLink>
         ))}
       </nav>

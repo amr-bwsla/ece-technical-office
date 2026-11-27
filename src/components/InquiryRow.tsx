@@ -12,9 +12,9 @@ export default function InquiryRow({ inq }: { inq: Inquiry }) {
   return (
     <Link to={`/inquiries/${inq.id}`} className="card block space-y-2 transition hover:border-teal-300">
       <div className="flex items-start justify-between gap-2">
-        <div className="flex min-w-0 items-center gap-2">
+        <div className="flex min-w-0 items-baseline gap-2">
           <PriorityDot p={inq.priority} />
-          <span className="truncate font-semibold">{tx(inq.title)}</span>
+          <span className="line-clamp-2 font-semibold leading-snug">{tx(inq.title)}</span>
         </div>
         <StatusBadge inq={inq} />
       </div>
@@ -22,8 +22,7 @@ export default function InquiryRow({ inq }: { inq: Inquiry }) {
         <DeptChip id={inq.fromDeptId} />
         <Arrow className="size-3.5" />
         {inq.toDeptIds.map((d) => <DeptChip key={d} id={d} />)}
-        <span className="mx-1">·</span>
-        <span className="truncate">{project?.code}</span>
+        {project && <span className="whitespace-nowrap ps-1 font-mono text-[11px] text-slate-400" dir="ltr">· {project.code}</span>}
       </div>
       <div className="flex items-center justify-between gap-2">
         <ResponseTimer inq={inq} />

@@ -38,7 +38,7 @@ export default function Submittals() {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between gap-2">
-        <div>
+        <div className="min-w-0">
           <h1 className="text-xl font-bold">{t('submittals')} <span className="text-sm font-normal text-slate-400">({submittals.length})</span></h1>
           <p className="text-xs text-slate-500">{t('reviewerHint')}</p>
         </div>
@@ -47,12 +47,12 @@ export default function Submittals() {
         )}
       </div>
 
-      <div className="grid grid-cols-1 gap-2 md:grid-cols-4">
-        <div className="relative md:col-span-1">
+      <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
+        <div className="relative col-span-2 md:col-span-1">
           <Search className="absolute start-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
           <input className="input !ps-9" placeholder={t('searchSubmittals')} value={query} onChange={(e) => setQuery(e.target.value)} />
         </div>
-        <select className="input" value={projectId} onChange={(e) => setProjectId(e.target.value)}>
+        <select className="input col-span-2 md:col-span-1" value={projectId} onChange={(e) => setProjectId(e.target.value)}>
           <option value="">{t('allProjects')}</option>
           {projects.map((p) => <option key={p.id} value={p.id}>{p.code} — {tx(p.name)}</option>)}
         </select>

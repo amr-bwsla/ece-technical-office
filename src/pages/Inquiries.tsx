@@ -45,12 +45,12 @@ export default function Inquiries() {
         <h1 className="text-xl font-bold">{t('inquiries')}</h1>
         <Link to="/inquiries/new" className="btn-primary"><Plus className="size-4" /> {t('newInquiry')}</Link>
       </div>
-      <div className="grid grid-cols-1 gap-2 md:grid-cols-4">
-        <div className="relative">
+      <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
+        <div className="relative col-span-2 md:col-span-1">
           <Search className="absolute start-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
           <input className="input !ps-9" placeholder={t('searchInquiries')} value={query} onChange={(e) => setQuery(e.target.value)} />
         </div>
-        <select className="input" value={projectId} onChange={(e) => setProjectId(e.target.value)}>
+        <select className="input col-span-2 md:col-span-1" value={projectId} onChange={(e) => setProjectId(e.target.value)}>
           <option value="">{t('allProjects')}</option>
           {projects.map((p) => <option key={p.id} value={p.id}>{p.code} — {tx(p.name)}</option>)}
         </select>
