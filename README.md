@@ -8,6 +8,8 @@ An interactive, frontend-only demo tailored for ECE (MEP / integrated design con
 
 Developed by **[Digital Bwsla — بوصلة رقمية](https://digitalbwsla.com)** · [info@digitalbwsla.com](mailto:info@digitalbwsla.com)
 
+> Working on this repo (human or AI agent)? Read [`AGENTS.md`](AGENTS.md) first. It covers conventions, gotchas, verification, deployment and the full change history.
+
 ### Tailored to ECE
 
 - **Branding**: ECE logo (`public/ece-logo.jpg`), navy `#003164` primary colour (remapped from Tailwind `teal-*` in `src/index.css`), new app icon.
