@@ -4,7 +4,7 @@
 
 An interactive, frontend-only demo tailored for ECE (MEP / integrated design consultancy, Cairo & Riyadh). All data lives in the browser (`localStorage`); there is no backend.
 
-**Live demo:** https://amr-bwsla.github.io/ece-technical-office/ — sign in with any demo account (password `123456`).
+**Live demo:** https://ece.digitalbwsla.com/ — sign in with any demo account (password `123456`).
 
 Developed by **[Digital Bwsla — بوصلة رقمية](https://digitalbwsla.com)** · [info@digitalbwsla.com](mailto:info@digitalbwsla.com)
 

@@ -27,4 +27,4 @@ try {
   if (Test-Path .git) { Remove-Item .git -Recurse -Force }
   Pop-Location
 }
-Write-Host 'Deployed: https://amr-bwsla.github.io/ece-technical-office/'
+Write-Host 'Deployed: https://ece.digitalbwsla.com/'

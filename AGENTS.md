@@ -7,7 +7,8 @@ Read this before changing anything. `README.md` is the product-facing descriptio
 - An **interactive, frontend-only sales demo** of a "Technical Office" system (inter-department coordination for an engineering consultancy). There is no backend. All data lives in the browser.
 - **Client:** ECE — Elite Consolidated Engineers ([ece-eg.com](https://ece-eg.com/)). This is an MEP-focused consultancy (Cairo since 2009, Riyadh since 2024), now also doing architecture and civil work.
 - **Built by:** Digital Bwsla / بوصلة رقمية ([digitalbwsla.com](https://digitalbwsla.com), info@digitalbwsla.com). The developer credit must stay visible (see section 6).
-- **Live:** https://amr-bwsla.github.io/ece-technical-office/
+- **Live:** https://ece.digitalbwsla.com/ (custom domain on GitHub Pages; the old `amr-bwsla.github.io/ece-technical-office/` URL redirects to it).
+- **Domain:** `digitalbwsla.com` DNS is managed in Hostinger hPanel (nameservers `ns1/ns2.dns-parking.com`). The record is `CNAME ece → amr-bwsla.github.io`. `public/CNAME` must stay, because `deploy.ps1` force-pushes `gh-pages` and would otherwise drop the custom domain.
 - **Repo:** https://github.com/amr-bwsla/ece-technical-office. It is **public**, following the owner's other client previews (`karma-beauty`, `digital-bwsla`). Source is on `main`; the built site is on `gh-pages`.
 - **Local path:** `D:\Digitalbwsla Projects\Technical Office\demo` (Windows, PowerShell). The parent folder contains nothing else.
 
@@ -113,7 +114,7 @@ Routes (`App.tsx`): `login`, `/`, `projects[/new|/:id]`, `inquiries[/new|/:id]`,
 
 ### Paths and permissions
 
-- **Paths must stay relative.** The app is served from the sub-path `/ece-technical-office/`. Use `./file` in `index.html` and JSX, or `import.meta.env.BASE_URL` (`ICON` and `LOGO` in `store.ts` do this). HashRouter means no server rewrites are needed.
+- **Paths must stay relative.** The app is now served from the domain root, but it was built to run under the sub-path `/ece-technical-office/` and should keep working in both places. Use `./file` in `index.html` and JSX, or `import.meta.env.BASE_URL` (`ICON` and `LOGO` in `store.ts` do this). HashRouter means no server rewrites are needed.
 - Permission checks belong in both the nav and the page. For example, the contracts nav item is hidden and the contracts pages render a restriction message for non-`mgmt` users.
 
 ## 6. Branding requirements
@@ -227,6 +228,8 @@ Routes (`App.tsx`): `login`, `/`, `projects[/new|/:id]`, `inquiries[/new|/:id]`,
     - `.btn` is `whitespace-nowrap shrink-0`. In page headers, give the title block `min-w-0`.
     - `main.tsx` reloads once on `vite:preloadError`. A tab still open from the previous deploy otherwise goes blank, because the new service worker deleted its lazy chunks.
     - `deploy.ps1` uses `ErrorActionPreference = 'Continue'` around git, because Windows PowerShell treats git's stderr output (CRLF warnings, push progress) as fatal.
+
+11. **Custom domain:** moved the demo to `https://ece.digitalbwsla.com/` (Hostinger CNAME, `public/CNAME`, Pages `cname` set through the API, HTTPS enforced).
 
 ## 11. Ideas not done yet (if the owner asks for "more")
 
