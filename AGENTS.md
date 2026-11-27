@@ -225,6 +225,8 @@ Routes (`App.tsx`): `login`, `/`, `projects[/new|/:id]`, `inquiries[/new|/:id]`,
     - `SubmittalTable` and `ContractTable` render cards below `md` and the table from `md` up.
     - List filters use a 2-column grid on phones (search and project span both columns).
     - `.btn` is `whitespace-nowrap shrink-0`. In page headers, give the title block `min-w-0`.
+    - `main.tsx` reloads once on `vite:preloadError`. A tab still open from the previous deploy otherwise goes blank, because the new service worker deleted its lazy chunks.
+    - `deploy.ps1` uses `ErrorActionPreference = 'Continue'` around git, because Windows PowerShell treats git's stderr output (CRLF warnings, push progress) as fatal.
 
 ## 11. Ideas not done yet (if the owner asks for "more")
 
