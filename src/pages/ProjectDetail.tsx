@@ -75,7 +75,7 @@ export default function ProjectDetail() {
           </div>
           <ProjectStatusBadge p={project} />
         </div>
-        <div className="grid gap-3 rounded-xl bg-slate-50 p-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3 rounded-xl bg-slate-50 p-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="text-xs text-slate-400">{t('client')}</div>
             <div className="font-semibold">{tx(project.client) || '—'}</div>
@@ -106,7 +106,7 @@ export default function ProjectDetail() {
       </div>
 
       {project.steps.length > 0 && (
-        <div className="grid gap-5 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
           <section className="card lg:col-span-2">
             <h2 className="mb-4 font-bold">{t('timeline')}</h2>
             <ol className="relative space-y-5 border-s-2 border-slate-200 ps-6">

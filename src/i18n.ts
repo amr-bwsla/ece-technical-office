@@ -264,6 +264,14 @@ const dict = {
   },
   offline: { ar: 'أنت غير متصل — التغييرات محفوظة على هذا الجهاز', en: "You're offline — changes are saved on this device" },
   close: { ar: 'إغلاق', en: 'Close' },
+  installTitle: { ar: 'ثبّت تطبيق ECE Office', en: 'Install ECE Office' },
+  installPitch: { ar: 'أضفه للشاشة الرئيسية وافتحه بضغطة واحدة — ويشتغل من غير إنترنت.', en: 'Add it to your home screen for one-tap access — works offline too.' },
+  installAndroidHint: {
+    ar: 'افتح قائمة المتصفح ⋮ واختر "تثبيت التطبيق" أو "إضافة إلى الشاشة الرئيسية".',
+    en: 'Open the browser menu ⋮ and choose "Install app" or "Add to Home screen".',
+  },
+  install: { ar: 'تثبيت', en: 'Install' },
+  notNow: { ar: 'ليس الآن', en: 'Not now' },
   developedBy: { ar: 'تطوير وتنفيذ', en: 'Developed by' },
   devCompany: { ar: 'بوصلة رقمية', en: 'Digital Bwsla' },
 

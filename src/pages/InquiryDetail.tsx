@@ -49,7 +49,7 @@ export default function InquiryDetail() {
             {project.code} — {tx(project.name)}
           </Link>
         )}
-        <div className="grid gap-2 text-sm md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-2 text-sm md:grid-cols-2">
           <div className="flex flex-wrap items-center gap-1.5">
             <span className="text-slate-500">{t('from')}:</span>
             <Avatar userId={inq.fromUserId} size="sm" /> {l(userById(inq.fromUserId).name)}

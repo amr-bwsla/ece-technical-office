@@ -59,7 +59,7 @@ export default function SubmittalDetail() {
             {project.code} — {tx(project.name)}
           </Link>
         )}
-        <div className="grid gap-3 rounded-xl bg-slate-50 p-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3 rounded-xl bg-slate-50 p-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="text-xs text-slate-400">{t('submittalType')}</div>
             <div className="font-semibold">{t(`st_${sub.type}`)}</div>
@@ -91,7 +91,7 @@ export default function SubmittalDetail() {
       {canReview && (
         <form onSubmit={review} className="card space-y-3 border-teal-300">
           <h2 className="flex items-center gap-2 font-bold"><ClipboardCheck className="size-5 text-teal-700" /> {t('reviewResult')}</h2>
-          <div className="grid gap-2 sm:grid-cols-4">
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-4">
             {(['A', 'B', 'C', 'D'] as const).map((c) => (
               <button
                 key={c}

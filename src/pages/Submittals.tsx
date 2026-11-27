@@ -47,7 +47,7 @@ export default function Submittals() {
         )}
       </div>
 
-      <div className="grid gap-2 md:grid-cols-4">
+      <div className="grid grid-cols-1 gap-2 md:grid-cols-4">
         <div className="relative md:col-span-1">
           <Search className="absolute start-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
           <input className="input !ps-9" placeholder={t('searchSubmittals')} value={query} onChange={(e) => setQuery(e.target.value)} />

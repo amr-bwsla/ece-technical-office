@@ -24,6 +24,15 @@ const isStandalone = () =>
 
 const isIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
 
+export const isMobileDevice = () => isIOS() || /android|mobile/i.test(navigator.userAgent)
+
+const DISMISS_KEY = 'install-banner-dismissed'
+const DISMISS_DAYS = 3
+
+export const installBannerDismissed = () => Date.now() - Number(localStorage.getItem(DISMISS_KEY) ?? 0) < DISMISS_DAYS * 86_400_000
+
+export const dismissInstallBanner = () => localStorage.setItem(DISMISS_KEY, String(Date.now()))
+
 function useSubscribe() {
   const [, force] = useState(0)
   useEffect(() => {
@@ -39,6 +48,8 @@ export function useInstall() {
   useSubscribe()
   const standalone = isStandalone()
   return {
+    standalone,
+    ios: isIOS(),
     canPrompt: !!deferred && !standalone,
     iosHint: !deferred && !standalone && isIOS(),
     install: async () => {

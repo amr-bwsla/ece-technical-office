@@ -49,7 +49,7 @@ export default function Contracts() {
       </div>
 
       <div className="card space-y-3">
-        <div className="grid gap-3 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           <div>
             <div className="text-xs text-slate-500">{t('totalValue')} ({base.length})</div>
             <div className="text-2xl font-bold text-teal-800">{formatMoney(value, lang)}</div>
@@ -71,7 +71,7 @@ export default function Contracts() {
         </div>
       </div>
 
-      <div className="grid gap-2 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-2 md:grid-cols-3">
         <div className="relative">
           <Search className="absolute start-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
           <input className="input !ps-9" placeholder={t('searchContracts')} value={query} onChange={(e) => setQuery(e.target.value)} />

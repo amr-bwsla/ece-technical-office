@@ -1,5 +1,6 @@
 import { lazy } from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
+import InstallBanner from './components/InstallBanner'
 import Layout from './components/Layout'
 import { NotFound } from './components/ui'
 import Login from './pages/Login'
@@ -46,6 +47,7 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
+      <InstallBanner />
     </HashRouter>
   )
 }

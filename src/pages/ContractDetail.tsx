@@ -56,7 +56,7 @@ export default function ContractDetail() {
             )}
           </div>
         </div>
-        <div className="grid gap-3 rounded-xl bg-slate-50 p-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3 rounded-xl bg-slate-50 p-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="text-xs text-slate-400">{t('contractValue')}</div>
             <div className="text-lg font-bold text-teal-800">{money(contract.value)}</div>
@@ -86,7 +86,7 @@ export default function ContractDetail() {
         )}
       </div>
 
-      <div className="grid gap-5 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
         <section className="card space-y-3 lg:col-span-2">
           <div className="flex items-center justify-between">
             <h2 className="font-bold">{t('payments')}</h2>

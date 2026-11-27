@@ -52,7 +52,7 @@ export default function NewProject() {
   return (
     <form onSubmit={submit} className="card mx-auto max-w-2xl space-y-4">
       <h1 className="text-xl font-bold">{t('newProject')}</h1>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div>
           <label className="label">{t('projectName')}</label>
           <input className="input" required value={name} onChange={(e) => setName(e.target.value)} />
@@ -62,7 +62,7 @@ export default function NewProject() {
           <input className="input" dir="ltr" required value={code} onChange={(e) => setCode(e.target.value)} />
         </div>
       </div>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div>
           <label className="label">{t('client')}</label>
           <input className="input" value={client} onChange={(e) => setClient(e.target.value)} />

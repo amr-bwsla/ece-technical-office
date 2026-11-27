@@ -108,6 +108,8 @@ Routes (`App.tsx`): `login`, `/`, `projects[/new|/:id]`, `inquiries[/new|/:id]`,
 
 - **Brand colour:** Tailwind's `teal-*` scale is remapped to ECE navy (`#003164` = `teal-700`) in `src/index.css`, so `teal-*` classes mean "brand". Shared utilities are `btn-primary`, `btn-ghost`, `card`, `input`, and `label`.
 - Use logical properties (`ms-`, `pe-`, `start-`) and `rtl:` variants so layouts work in both directions.
+- **Grids must always have a base column count** (`grid grid-cols-1 md:grid-cols-2`, not `grid md:grid-cols-2`). Without one, truncated text widens the implicit column on phones and the page scrolls sideways; this bug was found and fixed on the dashboard cards. Check with `document.documentElement.scrollWidth <= innerWidth` at a width of 390.
+- Use the `no-scrollbar` utility (in `index.css`) to hide scrollbars.
 
 ### Paths and permissions
 
@@ -116,7 +118,11 @@ Routes (`App.tsx`): `login`, `/`, `projects[/new|/:id]`, `inquiries[/new|/:id]`,
 
 ## 6. Branding requirements
 
-- **Client branding:** ECE logo (`public/ece-logo.jpg`, low-resolution; replace it if the owner sends a better one), navy theme, and the app icon `public/icon.svg`.
+- **Client branding:** navy theme and the app icon `public/icon.svg`. There are two logos:
+  - `public/ece-logo.jpg` (the original, 220×100, low-resolution with compression lines) is used on white backgrounds: the login card and the OG image.
+  - `components/EceLogo.tsx` is a vector redraw in white for the dark sidebar. The owner said a white card in the sidebar looked out of place.
+  - Replace both if the owner sends a better logo file.
+- The dashboard greeting shows the title and first name only ("Good morning, Eng. Ahmed"), as the owner requested.
 - **Developer credit** (requested by the owner, do not remove): `src/components/DevCredit.tsx` shows the Digital Bwsla logo, "Developed by Digital Bwsla" / "تطوير وتنفيذ بوصلة رقمية", digitalbwsla.com, and info@digitalbwsla.com.
   - It appears on the Login page, at the bottom of the desktop sidebar, in the mobile More sheet, and in the mobile page footer.
   - It also appears in `index.html` (`meta author`), `package.json` `author`, the README, and `og-image.jpg`.
@@ -135,6 +141,11 @@ Routes (`App.tsx`): `login`, `/`, `projects[/new|/:id]`, `inquiries[/new|/:id]`,
   - The "Install app" button appears when `beforeinstallprompt` fires (Android, Chrome, Edge) and opens the native prompt.
   - On iOS it opens a modal with the Safari "Add to Home Screen" steps.
   - It is hidden when the app already runs standalone. `pwa.ts` is imported first thing in `main.tsx` so the event isn't missed.
+- **Auto install banner** (`components/InstallBanner.tsx`, rendered in `App.tsx` on every route including login):
+  - Appears 1.5 s after opening on a phone (`isMobileDevice`) when the app isn't already installed.
+  - With `beforeinstallprompt` (Android/Chrome) it shows an **Install** button for the native prompt. On iOS it shows the Safari Share steps. Otherwise it explains how to install from the browser menu.
+  - "Not now" hides it for 3 days (localStorage key `install-banner-dismissed`).
+  - To test it, emulate a phone user agent and screen size; Chrome only fires the native prompt on HTTPS production builds.
 - An offline banner (`useOnline`) appears under the header.
 - **Regenerating icons:** sharp isn't installed. The icons were made by drawing `public/icon.svg` onto a canvas in the browser (CDP `Runtime.evaluate` returning `toDataURL`), then decoding the base64 with Node into `public/`.
   - Maskable icon: full-bleed navy with the logo inset 10%. Apple icon: 180 px with a 6% inset.
@@ -200,6 +211,12 @@ Routes (`App.tsx`): `login`, `/`, `projects[/new|/:id]`, `inquiries[/new|/:id]`,
    - Sidebar spacing for short screens.
    - Version 1.0.0.
    - Repo created and deployed to GitHub Pages, then verified live.
+
+9. **Owner feedback after publishing:**
+   - Greeting shows the first name only.
+   - White vector ECE logo in the sidebar.
+   - Automatic mobile install banner.
+   - Fixed sideways scrolling on phones by adding `grid-cols-1` to every grid.
 
 ## 11. Ideas not done yet (if the owner asks for "more")
 

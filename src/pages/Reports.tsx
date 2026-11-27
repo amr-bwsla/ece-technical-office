@@ -210,7 +210,7 @@ export default function Reports() {
         ))}
       </section>
 
-      <div className="grid gap-5 lg:grid-cols-2 print:grid-cols-1">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 print:grid-cols-1">
         <section className="card overflow-x-auto break-inside-avoid">
           <h2 className="mb-3 font-bold">{t('slaCompliance')}</h2>
           <table className="w-full text-sm">

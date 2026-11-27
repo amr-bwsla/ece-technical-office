@@ -25,13 +25,13 @@ function ContractsPanel() {
   const ending = contracts.filter((c) => contractStatus(c) === 'expiring').sort((a, b) => a.endsAt - b.endsAt)
 
   return (
-    <section className="grid gap-4 lg:grid-cols-3">
+    <section className="grid grid-cols-1 gap-4 lg:grid-cols-3">
       <Link to="/contracts" className="card group space-y-3 transition hover:shadow-lg lg:col-span-2">
         <h2 className="flex items-center gap-2 font-bold">
           <FileSignature className="size-5 text-teal-700" /> {t('contractsSummary')}
           <ArrowUpLeft className="ms-auto size-4 text-slate-300 transition group-hover:text-teal-600 ltr:-scale-x-100" />
         </h2>
-        <div className="grid gap-3 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           <div>
             <div className="text-xs text-slate-500">{t('totalValue')} ({contracts.length})</div>
             <div className="text-xl font-bold text-teal-800">{formatMoney(value, lang)}</div>
@@ -136,7 +136,7 @@ export default function Dashboard() {
               {new Intl.DateTimeFormat(lang, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(new Date())}
             </p>
             <h1 className="text-2xl font-bold md:text-3xl">
-              {hour < 12 ? t('goodMorning') : t('goodEvening')}{lang === 'ar' ? '، ' : ', '}{l(me.name)}
+              {hour < 12 ? t('goodMorning') : t('goodEvening')}{lang === 'ar' ? '، ' : ', '}{l(me.name).replace(/^((?:Eng\.|م\.)\s*\S+).*$/, '$1')}
             </h1>
             <p className="text-teal-100">{t('dashSubtitle')}</p>
             <div className="flex flex-wrap gap-2 pt-2">
@@ -177,7 +177,7 @@ export default function Dashboard() {
 
       {canManageContracts(me) && <ContractsPanel />}
 
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         <section className="card">
           <h2 className="mb-2 font-bold">{t('projectsStatus')}</h2>
           <div className="relative h-52">
@@ -252,7 +252,7 @@ export default function Dashboard() {
           </div>
         </div>
         {shown.length ? (
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
             {shown.map((p) => <ProjectCard key={p.id} p={p} />)}
           </div>
         ) : (
@@ -260,7 +260,7 @@ export default function Dashboard() {
         )}
       </section>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <section className="space-y-2">
           <h2 className="font-bold">{t('waitingForMe')} <span className="text-sm font-normal text-slate-400">({waiting.length})</span></h2>
           {waiting.length ? waiting.map((i) => <InquiryRow key={i.id} inq={i} />) : <Empty />}

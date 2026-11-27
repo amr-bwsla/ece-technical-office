@@ -25,8 +25,9 @@ import { Navigate, NavLink, Outlet, useLocation, useNavigate } from 'react-route
 import { type DictKey, useT } from '../i18n'
 import { useInstall, useOnline } from '../pwa'
 import { reviewers } from '../seed'
-import { canManageContracts, contractStatus, deptById, isRecipient, LOGO, submittalStatus, useMe, useStore } from '../store'
+import { canManageContracts, contractStatus, deptById, isRecipient, submittalStatus, useMe, useStore } from '../store'
 import DevCredit from './DevCredit'
+import EceLogo from './EceLogo'
 import { Avatar } from './ui'
 
 const ALERT_CHECK_MS = 30_000
@@ -120,12 +121,12 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen md:flex">
-      <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col overflow-y-auto [scrollbar-width:none] bg-gradient-to-b from-slate-900 to-slate-950 p-4 text-slate-300 md:flex print:!hidden">
+      <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col no-scrollbar overflow-y-auto bg-gradient-to-b from-slate-900 to-slate-950 p-4 text-slate-300 md:flex print:!hidden">
         <div className="mb-4 space-y-3">
-          <div className="rounded-2xl bg-white p-3 shadow-lg shadow-black/30">
-            <img src={LOGO} alt="Elite Consolidated Engineers" className="mx-auto h-14 object-contain" />
+          <div className="px-2 pt-2">
+            <EceLogo className="h-16" />
           </div>
-          <div className="px-2">
+          <div className="border-t border-white/10 px-2 pt-3">
             <div className="text-base font-bold text-white">{t('appName')}</div>
             <div className="text-[11px] text-slate-400">{t('loginSubtitle')}</div>
           </div>

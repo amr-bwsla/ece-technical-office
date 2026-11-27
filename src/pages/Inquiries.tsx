@@ -45,7 +45,7 @@ export default function Inquiries() {
         <h1 className="text-xl font-bold">{t('inquiries')}</h1>
         <Link to="/inquiries/new" className="btn-primary"><Plus className="size-4" /> {t('newInquiry')}</Link>
       </div>
-      <div className="grid gap-2 md:grid-cols-4">
+      <div className="grid grid-cols-1 gap-2 md:grid-cols-4">
         <div className="relative">
           <Search className="absolute start-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
           <input className="input !ps-9" placeholder={t('searchInquiries')} value={query} onChange={(e) => setQuery(e.target.value)} />

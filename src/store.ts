@@ -41,7 +41,6 @@ export { canManageContracts, contractStatus, paidPercent, type ContractStatus } 
 
 export const ICON = `${import.meta.env.BASE_URL}icon.svg`
 export const LOGO = `${import.meta.env.BASE_URL}ece-logo.jpg`
-
 const uid = () => Math.random().toString(36).slice(2, 10)
 
 export const userById = (id: string) => users.find((u) => u.id === id)!
