@@ -11,11 +11,14 @@ $name = git config user.name
 $email = git config user.email
 
 Push-Location dist
+# git writes progress and warnings to stderr, which 'Stop' would turn into terminating errors.
+$ErrorActionPreference = 'Continue'
 try {
   if (Test-Path .git) { Remove-Item .git -Recurse -Force }
   git init -q -b gh-pages
   git config user.name $name
   git config user.email $email
+  git config core.autocrlf false
   git add -A
   git commit -q -m "Deploy $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
   git push -f $remote gh-pages
