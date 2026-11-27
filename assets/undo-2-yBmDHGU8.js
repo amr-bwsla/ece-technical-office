@@ -1,0 +1,1 @@
+import{nt as e}from"./index-DgqDfOTR.js";var t={name:`check`,size:24,node:[[`path`,{d:`M20 6 9 17l-5-5`,key:`1gmf2c`}]]};t.node;var n=e(t),r={name:`undo-2`,size:24,node:[[`path`,{d:`M9 14 4 9l5-5`,key:`102s5s`}],[`path`,{d:`M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11`,key:`f3b9sd`}]]};r.node;var i=e(r);export{n,i as t};
