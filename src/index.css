@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Cairo", system-ui, sans-serif;
+
+  /* ECE brand navy (#003164) replaces the default teal used as the app's primary colour */
+  --color-teal-50: #f0f5fb;
+  --color-teal-100: #dce8f5;
+  --color-teal-200: #b5cde8;
+  --color-teal-300: #85aad6;
+  --color-teal-400: #5585c0;
+  --color-teal-500: #2f65a3;
+  --color-teal-600: #1a4d85;
+  --color-teal-700: #003164;
+  --color-teal-800: #00264f;
+  --color-teal-900: #001c3b;
+  --color-teal-950: #00122a;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  @apply bg-slate-50 text-slate-800 antialiased;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+  body {
+    @apply bg-white;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .card {
+    @apply shadow-none;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility card {
+  @apply rounded-2xl border border-slate-200 bg-white p-4 shadow-sm;
+}
+
+@utility btn {
+  @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+@utility btn-primary {
+  @apply btn bg-teal-700 text-white hover:bg-teal-800;
+}
+
+@utility btn-ghost {
+  @apply btn bg-slate-100 text-slate-700 hover:bg-slate-200;
+}
+
+@utility input {
+  @apply w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20;
+}
+
+@utility label {
+  @apply mb-1 block text-sm font-semibold text-slate-600;
+}
